@@ -20,13 +20,25 @@ output/
 
 ## Getting your session key
 
-1. Log in to [sports-tracker.com](https://www.sports-tracker.com) in your browser
-2. Open DevTools (`F12`) → **Network** tab
-3. Click any workout or reload the page
-4. Find a request to `api.sports-tracker.com`
-5. Look at the request headers and copy the **`STTAuthorization`** value
+Sports Tracker doesn't offer a public API or OAuth login, so this tool authenticates using a session key from your browser. Here's how to get it:
 
-> **Note:** Session keys expire after some time. If the backup fails with an auth error, just grab a fresh key and re-run — it will resume where it left off.
+1. Open your browser and go to [sports-tracker.com](https://www.sports-tracker.com)
+2. Log in with your Sports Tracker account
+3. Open **Developer Tools**:
+   - **Chrome/Edge:** Press `F12`, or right-click anywhere → *Inspect*
+   - **Firefox:** Press `F12`, or menu → *More tools* → *Web Developer Tools*
+   - **Safari:** Enable the Develop menu in *Preferences → Advanced*, then press `Cmd+Option+I`
+4. Click the **Network** tab in Developer Tools
+5. With the Network tab open, click on any workout in Sports Tracker (or just reload the page)
+6. In the Network tab, look for requests to `api.sports-tracker.com` — click on any one of them
+7. In the request details, go to the **Headers** section
+8. Under **Request Headers**, find the header named **`STTAuthorization`**
+9. Copy the value — it's a long alphanumeric string. That's your session key.
+
+**Tips:**
+- You can filter the Network tab by typing `api.sports-tracker` to find the right requests faster
+- The session key looks something like: `abn123def456ghi789...`
+- Session keys expire after some time (usually a few hours to days). If the backup stops with an authentication error, just grab a fresh key from your browser and re-run — the tool will automatically resume where it left off
 
 ## Usage
 
