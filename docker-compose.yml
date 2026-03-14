@@ -1,0 +1,21 @@
+services:
+  sports-tracker-backup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: sports-tracker-backup
+
+    environment:
+      - SESSION_KEY=${SESSION_KEY}
+
+    volumes:
+      - ./output:/app/output
+
+    restart: "no"
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
